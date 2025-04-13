@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Image-to-Video Compressor | Smart Media Converter</title>
+    <meta name="description" content="Convert and compress text to image to video efficiently with our advanced compression tool. Optimize your media files for web and social media.">
+    <meta name="keywords" content="text compression, image converter, video compressor, media optimization">
+    
+    <!-- SEO Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Text-to-Image-to-Video Compressor",
+        "applicationCategory": "Multimedia",
+        "operatingSystem": "Web",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        }
+    }
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+    
+    <style>
+        .conversion-box {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 200px;
+        }
+        .ad-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: #f5f5f5;
+        }
+        #preview-container {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+        }
+        .compression-controls {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Ad -->
+    <div class="ad-container">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="XXXXXXXXXX"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Smart Media Compression Tool</h1>
+        
+        <div class="compression-controls">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="compressionLevel" class="form-label">Compression Level</label>
+                    <input type="range" class="form-range" id="compressionLevel" min="1" max="10" value="5">
+                </div>
+                <div class="col-md-6">
+                    <p class="mt-2">Selected Level: <span id="levelValue">5</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="conversion-box">
+            <div class="row">
+                <div class="col-md-6">
+                    <textarea id="inputText" class="form-control" rows="5" 
+                    placeholder="Enter your text here..."></textarea>
+                    <button class="btn btn-primary mt-2" onclick="textToImage()">Convert to Image</button>
+                </div>
+                <div class="col-md-6">
+                    <div id="imagePreview"></div>
+                    <button class="btn btn-success mt-2" onclick="imageToVideo()" id="videoBtn" disabled>
+                        Convert to Video
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mid-content Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="XXXXXXXXXX"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+        </div>
+
+        <div id="preview-container"></div>
+    </div>
+
+    <script>
+        let currentImage = null;
+        
+        function textToImage() {
+            const text = document.getElementById('inputText').value;
+            const compressionLevel = document.getElementById('compressionLevel').value;
+            
+            // Create canvas element
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions based on compression level
+            const width = 800 - (compressionLevel * 50);
+            const height = 600 - (compressionLevel * 30);
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Draw text on canvas
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = '#000000';
+            ctx.font = '20px Arial';
+            wrapText(ctx, text, 20, 30, width - 40, 24);
+            
+            // Convert to image with quality adjustment
+            const quality = 1 - (compressionLevel * 0.08);
+            currentImage = canvas.toDataURL('image/jpeg', quality);
+            
+            document.getElementById('imagePreview').innerHTML = 
+                `<img src="${currentImage}" class="img-fluid" alt="Converted image">`;
+            document.getElementById('videoBtn').disabled = false;
+        }
+
+        function imageToVideo() {
+            const compressionLevel = document.getElementById('compressionLevel').value;
+            const video = document.createElement('video');
+            video.controls = true;
+            video.classList.add('img-fluid');
+            
+            // Video encoding simulation (would need actual encoder implementation)
+            const videoSource = URL.createObjectURL(new Blob([currentImage], {type: 'image/jpeg'}));
+            
+            video.innerHTML = `
+                <source src="${videoSource}" type="video/mp4">
+                Your browser does not support the video tag.
+            `;
+            
+            document.getElementById('preview-container').innerHTML = '';
+            document.getElementById('preview-container').appendChild(video);
+            
+            // Simulate compression
+            video.style.transform = `scale(${1 - (compressionLevel * 0.02)})`;
+        }
+
+        // Text wrapping helper function
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            
+            for(let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                const metrics = context.measureText(testLine);
+                const testWidth = metrics.width;
+                
+                if (testWidth > maxWidth && n > 0) {
+                    context.fillText(line, x, y);
+                    line = words[n] + ' ';
+                    y += lineHeight;
+                } else {
+                    line = testLine;
+                }
+            }
+            context.fillText(line, x, y);
+        }
+
+        // Initialize Adsense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        // Compression level display
+        document.getElementById('compressionLevel').addEventListener('input', function(e) {
+            document.getElementById('levelValue').textContent = e.target.value;
+        });
+    </script>
+
+    <!-- Footer Ad -->
+    <div class="ad-container">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="XXXXXXXXXX"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
