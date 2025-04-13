@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaMagic Studio | Transform Text to Visual Content</title>
+    <meta name="description" content="Convert text to stunning visuals and videos instantly with our AI-powered tools. Create, edit, and optimize multimedia content effortlessly.">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #ec4899;
+            --dark: #1e1b4b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            padding: 6rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(99,102,241,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .tool-card:hover::before {
+            animation: shine 1.5s;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        .nav-blur {
+            background: rgba(255,255,255,0.9) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-magic {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-magic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99,102,241,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top nav-blur">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" style="color: var(--primary);">MediaMagic Studio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Transform Text into Stunning Visual Content</h1>
+            <p class="lead mb-5">Convert plain text to eye-catching images and engaging videos in seconds</p>
+            <button class="btn btn-magic">Start Creating Free</button>
+        </div>
+    </section>
+
+    <!-- Featured Tools Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+    <div class="icon-box bg-primary text-white rounded-circle p-3 mb-3" style="width: 60px;">
+        <i class="bi bi-textarea-t fs-4"></i>
+    </div>
+    <h3>
+        <a href="text-to-image.html" class="text-dark text-decoration-none hover-effect">
+            Text to Image 
+        </a>
+    </h3>
+    <p>Convert text descriptions to high-quality images with AI-powered generation</p>
+</div>                        <p>Convert text descriptions to high-quality images with AI-powered generation</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-box bg-primary text-white rounded-circle p-3 mb-3" style="width: 60px;">
+                            <i class="bi bi-images fs-4"></i>
+                        </div>
+                        <h3>Image to Video</h3>
+                        <p>Transform static images into animated videos with transitions and effects</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-box bg-primary text-white rounded-circle p-3 mb-3" style="width: 60px;">
+                            <i class="bi bi-magic fs-4"></i>
+                        </div>
+                        <h3>Smart Compression</h3>
+                        <p>Optimize your media files without quality loss using advanced algorithms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Showcase -->
+    <section id="tools" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Featured Tools</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="tool-card">
+                        <i class="bi bi-text-wrap fs-2 text-primary"></i>
+                        <h4 class="my-3">Text Animator</h4>
+                        <p>Create animated text videos from plain content</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="tool-card">
+                        <i class="bi bi-file-image fs-2 text-primary"></i>
+                        <h4 class="my-3">Image Enhancer</h4> 
+                        <p>Improve image quality and resolution</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="tool-card">
+                        <i class="bi bi-film fs-2 text-primary"></i>
+                        <h4 class="my-3">Video Compressor</h4>
+                        <p>Reduce video size while maintaining quality</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="tool-card">
+                        <i class="bi bi-card-text fs-2 text-primary"></i>
+                        <h4 class="my-3">Caption Generator</h4>
+                        <p>Automatically create video captions from text</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Start Creating Amazing Content Today</h2>
+            <p class="mb-4">Join thousands of creators already using MediaMagic Studio</p>
+            <button class="btn btn-magic">Get Started Now</button>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Add scroll animation for navbar
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('nav-blur');
+            } else {
+                document.querySelector('.navbar').classList.remove('nav-blur');
+            }
+        });
+    </script>
+</body>
+</html>
